@@ -1,11 +1,30 @@
+<!-- logged.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logged In</title>
+  </head>
+  <body>
+    <h1>Welcome! You are logged in.</h1>
+    <button id="logoutButton">Logout</button>
+
+    <script>
+      // טיפול בכפתור ההתנתקות
+      const logoutButton = document.getElementById("logoutButton");
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("loggedIn"); // הסרת מצב ההתחברות
+        window.location.href = "loginpage.html"; // חזרה לדף ההתחברות
+      });
+
+      // בדוק אם המשתמש עדיין מחובר
+      window.onload = () => {
+        if (localStorage.getItem("loggedIn") !== "true") {
+          window.location.href = "loginpage.html"; // אם לא מחובר, מחזיר לעמוד ההתחברות
+        }
+      };
+    </script>
+  </body>
 </html>
